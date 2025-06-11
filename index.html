@@ -13,9 +13,9 @@
 
         body {
             font-family: 'Microsoft JhengHei', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            min-height: 100vh;
+            background: #f5f5f5;
             color: #333;
+            line-height: 1.6;
         }
 
         .container {
@@ -23,116 +23,116 @@
             margin: 0 auto;
             background: white;
             min-height: 100vh;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
             position: relative;
-            overflow-x: hidden;
         }
 
+        /* 固定在頂部的區域 */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 430px;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 店家標題區 */
         .header {
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
-            padding: 25px 20px;
+            padding: 20px;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
         .header h1 {
-            font-size: 26px;
+            font-size: 24px;
             margin-bottom: 8px;
+            font-weight: bold;
         }
 
         .header p {
+            font-size: 14px;
             opacity: 0.9;
-            font-size: 15px;
         }
 
-        .admin-trigger {
+        .admin-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 30px;
-            height: 30px;
+            top: 15px;
+            right: 15px;
             background: none;
             border: none;
             color: white;
             font-size: 20px;
             cursor: pointer;
-            opacity: 0.7;
+            padding: 5px;
+            opacity: 0.8;
         }
 
-        .categories {
+        /* 分類導航欄 */
+        .nav-tabs {
+            background: #fff;
             display: flex;
-            background: #f8f9fa;
-            padding: 0 15px;
-            position: sticky;
-            top: 91px;
-            z-index: 99;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow-x: auto;
+            border-bottom: 1px solid #eee;
         }
 
-        .category-btn {
+        .nav-tab {
             flex: 1;
-            padding: 18px 10px;
-            border: none;
+            padding: 15px 8px;
+            text-align: center;
             background: none;
-            cursor: pointer;
-            font-size: 15px;
+            border: none;
+            font-size: 16px;
             font-weight: bold;
             color: #666;
-            border-bottom: 3px solid transparent;
+            cursor: pointer;
             transition: all 0.3s ease;
-            white-space: nowrap;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-bottom: 3px solid transparent;
         }
 
-        .category-btn.active {
+        .nav-tab.active {
             color: #ff6b6b;
             border-bottom-color: #ff6b6b;
         }
 
-        .menu-section {
-            padding: 20px;
-            padding-bottom: 120px;
+        /* 主要內容區 */
+        .main-content {
+            padding-top: 140px; /* 為固定區域留出空間 */
+            padding-bottom: 100px; /* 為購物車留出空間 */
         }
 
+        .menu-list {
+            padding: 20px;
+        }
+
+        /* 菜單項目 */
         .menu-item {
             background: white;
-            border-radius: 16px;
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
             padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 2px solid transparent;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
         }
 
         .menu-item.selected {
             border-color: #ff6b6b;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            background: #fff8f8;
         }
 
-        .item-info {
+        .item-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        .item-details h3 {
+        .item-name {
             font-size: 18px;
+            font-weight: bold;
             color: #333;
-            margin-bottom: 5px;
-        }
-
-        .item-details p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.4;
         }
 
         .item-price {
@@ -141,50 +141,62 @@
             color: #ff6b6b;
         }
 
-        .quantity-selector {
+        .item-desc {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* 數量選擇器 */
+        .quantity-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qty-controls {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 20px;
-            background: #f8f9fa;
-            padding: 12px 20px;
-            border-radius: 30px;
+            background: #f8f8f8;
+            padding: 10px 25px;
+            border-radius: 25px;
             border: 2px solid #eee;
         }
 
-        .menu-item.selected .quantity-selector {
+        .menu-item.selected .qty-controls {
             background: #ff6b6b;
             border-color: #ff6b6b;
         }
 
-        .qty-button {
-            width: 40px;
-            height: 40px;
+        .qty-btn {
+            width: 35px;
+            height: 35px;
             border: none;
             background: white;
             color: #ff6b6b;
             border-radius: 50%;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .qty-button:hover {
+        .qty-btn:hover {
             transform: scale(1.1);
         }
 
-        .qty-button:disabled {
-            opacity: 0.3;
+        .qty-btn:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none;
         }
 
-        .quantity-display {
+        .qty-display {
             font-size: 18px;
             font-weight: bold;
             min-width: 30px;
@@ -192,40 +204,37 @@
             color: #333;
         }
 
-        .menu-item.selected .quantity-display {
+        .menu-item.selected .qty-display {
             color: white;
         }
 
-        .cart-bar {
+        /* 購物車 */
+        .cart-footer {
             position: fixed;
             bottom: 0;
-            left: 0;
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 100%;
             max-width: 430px;
-            margin: 0 auto;
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
             padding: 20px;
             display: none;
-            box-shadow: 0 -5px 25px rgba(0,0,0,0.2);
-            z-index: 998;
+            z-index: 900;
         }
 
-        .cart-bar.show {
+        .cart-footer.show {
             display: block;
         }
 
-        .cart-bar-content {
+        .cart-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .cart-summary {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
+            flex: 1;
         }
 
         .cart-count {
@@ -238,23 +247,23 @@
             font-weight: bold;
         }
 
-        .checkout-button {
+        .cart-btn {
             background: rgba(255,255,255,0.2);
             border: 2px solid rgba(255,255,255,0.5);
             color: white;
-            padding: 14px 28px;
-            border-radius: 30px;
+            padding: 12px 24px;
+            border-radius: 25px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .checkout-button:hover {
+        .cart-btn:hover {
             background: rgba(255,255,255,0.3);
-            border-color: white;
         }
 
+        /* 訂單彈窗 */
         .modal {
             position: fixed;
             top: 0;
@@ -275,7 +284,7 @@
 
         .modal-content {
             background: white;
-            border-radius: 20px;
+            border-radius: 15px;
             width: 100%;
             max-width: 400px;
             max-height: 90vh;
@@ -286,37 +295,56 @@
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
             padding: 20px;
-            border-radius: 20px 20px 0 0;
+            border-radius: 15px 15px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .modal-close {
+        .close-btn {
             background: none;
             border: none;
             color: white;
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
-            padding: 5px;
         }
 
         .modal-body {
-            padding: 25px;
+            padding: 20px;
         }
 
-        .order-form {
-            margin-bottom: 25px;
-        }
-
-        .form-group {
+        /* 用餐方式 */
+        .dining-options {
+            display: flex;
+            gap: 10px;
             margin-bottom: 20px;
+        }
+
+        .dining-option {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dining-option.active {
+            border-color: #ff6b6b;
+            background: #ff6b6b;
+            color: white;
+        }
+
+        /* 表單 */
+        .form-group {
+            margin-bottom: 15px;
         }
 
         .form-label {
             display: block;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             color: #333;
         }
 
@@ -326,9 +354,9 @@
 
         .form-input {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             border: 2px solid #ddd;
-            border-radius: 10px;
+            border-radius: 8px;
             font-size: 16px;
             transition: border-color 0.3s ease;
         }
@@ -338,38 +366,16 @@
             border-color: #ff6b6b;
         }
 
-        .dining-options {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .dining-option {
-            flex: 1;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .dining-option.active {
-            border-color: #ff6b6b;
-            background: #ff6b6b;
-            color: white;
-        }
-
+        /* 訂單項目 */
         .order-items {
-            margin-bottom: 25px;
+            margin: 20px 0;
         }
 
         .order-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #eee;
         }
 
@@ -377,20 +383,19 @@
             border-bottom: none;
         }
 
-        .item-name {
-            font-weight: bold;
+        .item-info {
             flex: 1;
         }
 
         .item-controls {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .control-btn {
-            width: 32px;
-            height: 32px;
+        .mini-btn {
+            width: 28px;
+            height: 28px;
             border: 1px solid #ddd;
             background: white;
             border-radius: 50%;
@@ -398,28 +403,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            font-size: 14px;
         }
 
-        .control-btn:hover {
+        .mini-btn:hover {
             background: #ff6b6b;
             color: white;
             border-color: #ff6b6b;
         }
 
-        .item-quantity {
-            min-width: 25px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .delete-btn {
+        .remove-btn {
             background: #dc3545;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 15px;
+            padding: 4px 8px;
+            border-radius: 10px;
             font-size: 12px;
             cursor: pointer;
         }
@@ -427,32 +425,31 @@
         .order-total {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            padding: 20px 0;
+            padding: 15px 0;
             border-top: 2px solid #eee;
-            margin-bottom: 20px;
+            margin: 15px 0;
         }
 
-        .submit-order {
+        .submit-btn {
             width: 100%;
             background: linear-gradient(45deg, #28a745, #20c997);
             color: white;
             border: none;
-            padding: 16px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .submit-order:hover {
+        .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(40,167,69,0.3);
         }
 
+        /* 提示訊息 */
         .toast {
             position: fixed;
             top: 50%;
@@ -466,23 +463,15 @@
             font-size: 16px;
         }
 
+        /* 管理後台 */
         .admin-panel {
             display: none;
             padding: 20px;
-            background: #f8f9fa;
-            min-height: 100vh;
+            padding-top: 160px;
         }
 
         .admin-panel.show {
             display: block;
-        }
-
-        .admin-header {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            text-align: center;
         }
 
         .back-btn {
@@ -494,47 +483,43 @@
             cursor: pointer;
             margin-bottom: 20px;
         }
-
-        @media (max-width: 480px) {
-            .container {
-                max-width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 店家標題 -->
-        <div class="header">
-            <button class="admin-trigger" onclick="adminTrigger()">⚙️</button>
-            <h1>🍜 姐妹小吃</h1>
-            <p>炒麵/炒米粉/麻油麵線專賣 · 手機點餐免排隊</p>
+        <!-- 固定在頂部的區域 -->
+        <div class="fixed-header">
+            <!-- 店家標題 -->
+            <div class="header">
+                <button class="admin-btn" onclick="adminClick()">⚙️</button>
+                <h1>🍜 姐妹小吃</h1>
+                <p>炒麵/炒米粉/麻油麵線專賣 · 手機點餐免排隊</p>
+            </div>
+            
+            <!-- 分類導航 -->
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="switchCategory('noodles')">麵食</button>
+                <button class="nav-tab" onclick="switchCategory('rice')">飯類</button>
+                <button class="nav-tab" onclick="switchCategory('snacks')">小菜</button>
+                <button class="nav-tab" onclick="switchCategory('soup')">湯品</button>
+            </div>
         </div>
 
-        <!-- 客人點餐界面 -->
-        <div id="customer-interface">
-            <!-- 分類選單 -->
-            <div class="categories">
-                <button class="category-btn active" onclick="showCategory('noodles')">麵食</button>
-                <button class="category-btn" onclick="showCategory('rice')">飯類</button>
-                <button class="category-btn" onclick="showCategory('snacks')">小菜</button>
-                <button class="category-btn" onclick="showCategory('soup')">湯品</button>
+        <!-- 主要內容區 -->
+        <div class="main-content" id="customer-view">
+            <div class="menu-list" id="menu-list">
+                <!-- 菜單項目會動態載入 -->
             </div>
+        </div>
 
-            <!-- 菜單區域 -->
-            <div class="menu-section" id="menu-section">
-                <!-- 菜單項目會由 JavaScript 載入 -->
-            </div>
-
-            <!-- 底部購物車 -->
-            <div class="cart-bar" id="cart-bar">
-                <div class="cart-bar-content">
-                    <div class="cart-summary">
-                        <div class="cart-count" id="cart-count">已選 0 樣餐點</div>
-                        <div class="cart-total" id="cart-total">總計 $0</div>
-                    </div>
-                    <button class="checkout-button" onclick="openOrderModal()">確認訂單</button>
+        <!-- 購物車 -->
+        <div class="cart-footer" id="cart-footer">
+            <div class="cart-info">
+                <div class="cart-summary">
+                    <div class="cart-count" id="cart-count">已選 0 樣餐點</div>
+                    <div class="cart-total" id="cart-total">總計 $0</div>
                 </div>
+                <button class="cart-btn" onclick="openOrderModal()">確認訂單</button>
             </div>
         </div>
 
@@ -543,7 +528,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h3>確認訂單</h3>
-                    <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+                    <button class="close-btn" onclick="closeOrderModal()">&times;</button>
                 </div>
                 <div class="modal-body">
                     <!-- 用餐方式 -->
@@ -557,15 +542,13 @@
                     </div>
 
                     <!-- 客戶資訊 -->
-                    <div class="order-form">
-                        <div class="form-group">
-                            <label class="form-label">姓名 <span class="required">*</span></label>
-                            <input type="text" class="form-input" id="customer-name" placeholder="請輸入您的姓名">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">手機號碼 <span class="required">*</span></label>
-                            <input type="tel" class="form-input" id="customer-phone" placeholder="請輸入您的手機號碼">
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">姓名 <span class="required">*</span></label>
+                        <input type="text" class="form-input" id="customer-name" placeholder="請輸入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">手機號碼 <span class="required">*</span></label>
+                        <input type="tel" class="form-input" id="customer-phone" placeholder="請輸入您的手機號碼">
                     </div>
 
                     <!-- 訂單項目 -->
@@ -580,19 +563,16 @@
                     </div>
 
                     <!-- 送出按鈕 -->
-                    <button class="submit-order" onclick="submitOrder()">送出訂單</button>
+                    <button class="submit-btn" onclick="submitOrder()">送出訂單</button>
                 </div>
             </div>
         </div>
 
         <!-- 管理後台 -->
         <div class="admin-panel" id="admin-panel">
-            <button class="back-btn" onclick="exitAdmin()">← 返回點餐</button>
-            <div class="admin-header">
-                <h2>📊 姐妹小吃管理後台</h2>
-                <p>今日營運數據</p>
-            </div>
-            <!-- 這裡可以加入銷售統計等功能 -->
+            <button class="back-btn" onclick="exitAdmin()">← 返回菜單</button>
+            <h2>📊 姐妹小吃管理後台</h2>
+            <p>管理功能開發中...</p>
         </div>
     </div>
 
@@ -638,54 +618,33 @@
 
         // === 全域變數 ===
         let currentCategory = 'noodles';
-        let cart = {};  // 使用物件形式：{itemId: quantity}
+        let cart = {};
         let selectedDining = '內用';
-        let adminClickCount = 0;
+        let adminClicks = 0;
 
         // === 初始化 ===
         document.addEventListener('DOMContentLoaded', function() {
-            // 確保初始化時顯示麵食菜單
-            currentCategory = 'noodles';
-            
-            // 設定麵食按鈕為 active
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.includes('麵食')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // 立即渲染麵食菜單
             renderMenu();
-            
-            // 確保購物車狀態正確
             updateCartDisplay();
         });
 
-        // === 顯示分類菜單 ===
-        function showCategory(category) {
+        // === 切換分類 ===
+        function switchCategory(category) {
             currentCategory = category;
             
-            // 更新分類按鈕
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active');
+            // 更新按鈕狀態
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
             });
+            event.target.classList.add('active');
             
-            // 找到對應的按鈕並設為 active
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                if (btn.textContent.includes('麵食') && category === 'noodles') btn.classList.add('active');
-                if (btn.textContent.includes('飯類') && category === 'rice') btn.classList.add('active');
-                if (btn.textContent.includes('小菜') && category === 'snacks') btn.classList.add('active');
-                if (btn.textContent.includes('湯品') && category === 'soup') btn.classList.add('active');
-            });
-            
-            // 渲染菜單
+            // 重新渲染菜單
             renderMenu();
         }
 
         // === 渲染菜單 ===
         function renderMenu() {
-            const container = document.getElementById('menu-section');
+            const container = document.getElementById('menu-list');
             const items = menuData[currentCategory];
             
             container.innerHTML = items.map(item => {
@@ -693,18 +652,18 @@
                 const isSelected = quantity > 0;
                 
                 return `
-                    <div class="menu-item ${isSelected ? 'selected' : ''}" id="item-${item.id}">
-                        <div class="item-info">
-                            <div class="item-details">
-                                <h3>${item.name}</h3>
-                                <p>${item.desc}</p>
-                            </div>
+                    <div class="menu-item ${isSelected ? 'selected' : ''}">
+                        <div class="item-header">
+                            <div class="item-name">${item.name}</div>
                             <div class="item-price">$${item.price}</div>
                         </div>
-                        <div class="quantity-selector">
-                            <button class="qty-button" onclick="updateQuantity(${item.id}, -1)" ${quantity <= 0 ? 'disabled' : ''}>-</button>
-                            <span class="quantity-display">${quantity}</span>
-                            <button class="qty-button" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        <div class="item-desc">${item.desc}</div>
+                        <div class="quantity-section">
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)" ${quantity <= 0 ? 'disabled' : ''}>-</button>
+                                <span class="qty-display">${quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -722,20 +681,16 @@
                 cart[itemId] = newQty;
             }
             
-            // 重新渲染當前分類
             renderMenu();
-            
-            // 更新購物車顯示
             updateCartDisplay();
         }
 
         // === 更新購物車顯示 ===
         function updateCartDisplay() {
-            const cartBar = document.getElementById('cart-bar');
+            const cartFooter = document.getElementById('cart-footer');
             const cartCount = document.getElementById('cart-count');
             const cartTotal = document.getElementById('cart-total');
             
-            // 計算總數量和總金額
             let totalItems = 0;
             let totalAmount = 0;
             
@@ -748,13 +703,12 @@
                 }
             });
             
-            // 顯示或隱藏購物車
             if (totalItems > 0) {
-                cartBar.classList.add('show');
+                cartFooter.classList.add('show');
                 cartCount.textContent = `已選 ${totalItems} 樣餐點`;
                 cartTotal.textContent = `總計 $${totalAmount}`;
             } else {
-                cartBar.classList.remove('show');
+                cartFooter.classList.remove('show');
             }
         }
 
@@ -800,15 +754,15 @@
                     
                     html += `
                         <div class="order-item">
-                            <div>
-                                <div class="item-name">${item.name}</div>
+                            <div class="item-info">
+                                <div style="font-weight: bold;">${item.name}</div>
                                 <div style="color: #666; font-size: 14px;">單價 $${item.price}</div>
                             </div>
                             <div class="item-controls">
-                                <button class="control-btn" onclick="updateModalQuantity(${item.id}, -1)">-</button>
-                                <span class="item-quantity">${quantity}</span>
-                                <button class="control-btn" onclick="updateModalQuantity(${item.id}, 1)">+</button>
-                                <button class="delete-btn" onclick="removeItem(${item.id})">移除</button>
+                                <button class="mini-btn" onclick="updateModalQuantity(${item.id}, -1)">-</button>
+                                <span style="margin: 0 8px; font-weight: bold;">${quantity}</span>
+                                <button class="mini-btn" onclick="updateModalQuantity(${item.id}, 1)">+</button>
+                                <button class="remove-btn" onclick="removeItem(${item.id})">移除</button>
                             </div>
                         </div>
                     `;
@@ -847,7 +801,6 @@
             const name = document.getElementById('customer-name').value.trim();
             const phone = document.getElementById('customer-phone').value.trim();
             
-            // 驗證必填欄位
             if (!name) {
                 showToast('請填寫姓名！');
                 document.getElementById('customer-name').focus();
@@ -866,10 +819,7 @@
                 return;
             }
             
-            // 產生訂單內容
             const orderText = generateOrderText(name, phone);
-            
-            // 發送到 LINE
             sendToLine(orderText);
             
             // 清空購物車和表單
@@ -877,7 +827,6 @@
             document.getElementById('customer-name').value = '';
             document.getElementById('customer-phone').value = '';
             
-            // 關閉彈窗並更新顯示
             closeOrderModal();
             renderMenu();
             updateCartDisplay();
@@ -885,6 +834,16 @@
             showToast('訂單已送出到 LINE！請等候店家確認');
         }
 
+        // === 產生訂單文字 ===
+        function generateOrderText(name, phone) {
+            const orderNumber = Date.now().toString().slice(-6);
+            let totalAmount = 0;
+            let totalItems = 0;
+            
+            let orderText = `🍜 姐妹小吃 - 新訂單\n`;
+            orderText += `📋 訂單編號：#${orderNumber}\n`;
+            orderText += `⏰ 時間：${new Date().toLocaleString('zh-TW')}\n`;
+            orderText += `${selectedDining === '內用' ? '🍽️' : '🥡'} 用餐方式：${selectedDining}\n`;
         // === 產生訂單文字 ===
         function generateOrderText(name, phone) {
             const orderNumber = Date.now().toString().slice(-6);
@@ -931,13 +890,9 @@
 
         // === 發送到 LINE ===
         function sendToLine(orderText) {
-            // 使用 LINE Official Account
             const lineURL = `https://line.me/R/ti/p/@sister666?text=${encodeURIComponent(orderText)}`;
-            
-            // 開啟 LINE
             const newWindow = window.open(lineURL, '_blank');
             
-            // 備用方案
             setTimeout(() => {
                 if (!newWindow || newWindow.closed) {
                     showLineBackup(orderText);
@@ -953,7 +908,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>📱 請手動傳送訂單</h3>
-                        <button class="modal-close" onclick="this.parentElement.parentElement.parentElement.remove()">&times;</button>
+                        <button class="close-btn" onclick="this.parentElement.parentElement.parentElement.remove()">&times;</button>
                     </div>
                     <div class="modal-body">
                         <p style="margin-bottom: 15px; color: #666;">請複製以下訂單內容，手動貼到 LINE 傳送給店家：</p>
@@ -978,23 +933,23 @@
         }
 
         // === 管理員觸發 ===
-        function adminTrigger() {
-            adminClickCount++;
-            if (adminClickCount >= 5) {
-                document.getElementById('customer-interface').style.display = 'none';
+        function adminClick() {
+            adminClicks++;
+            if (adminClicks >= 5) {
+                document.getElementById('customer-view').style.display = 'none';
                 document.getElementById('admin-panel').classList.add('show');
-                adminClickCount = 0;
+                adminClicks = 0;
                 showToast('已進入管理模式');
             }
             
             setTimeout(() => {
-                adminClickCount = 0;
+                adminClicks = 0;
             }, 3000);
         }
 
         // === 退出管理模式 ===
         function exitAdmin() {
-            document.getElementById('customer-interface').style.display = 'block';
+            document.getElementById('customer-view').style.display = 'block';
             document.getElementById('admin-panel').classList.remove('show');
         }
     </script>
